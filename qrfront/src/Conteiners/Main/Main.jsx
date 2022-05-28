@@ -1,24 +1,11 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 import { FetchImage } from "../../Helpers/fetchImage";
-import { Spiner, QrCode, ButtonIcon } from "../../Components";
+import { QrCode, ButtonIcon, Input } from "../../Components";
+
+import "./main.css";
 
 import { drawersNames, presetNames } from "../../consts";
-
-import {
-  circle,
-  gapped,
-  horizontal,
-  round,
-  square,
-  vertical,
-  facebook,
-  instagram,
-  youtube,
-  tictok,
-  telegram,
-  twitter,
-} from "../../assets/img";
 
 const Main = ({ props, type, placeholder }) => {
   const [qrImage, setQrImage] = useState(null);
@@ -53,7 +40,7 @@ const Main = ({ props, type, placeholder }) => {
     setBackgroundColor((current) => (current = e));
   };
 
-  const qrTypeSelectHandler = (e) => {
+  const drawerSelectHandler = (e) => {
     console.log(e);
     setDrawerType((newDrawer) => (newDrawer = e));
   };
@@ -74,63 +61,43 @@ const Main = ({ props, type, placeholder }) => {
   };
 
   return (
-    <div className="App__input">
-      <div className="App__input_control">
-        <input
-          className="App__input_control-text"
-          type={type}
-          placeholder={placeholder}
-          onChange={(e) => setText((newText) => (newText = e.target.value))}
+    <div className="App__main">
+      <div className="App__main__inputs">
+        <Input
+          inputType="text"
+          inputPlaceholder="URL"
+          isDisabled={false}
+          inputOnChange={fetchHandler}
         />
-        <div className="App__input_control-type">
-          {Object.values(drawersNames).map((drawer) => {
-            return (
-              <ButtonIcon
-                key={drawer.name}
-                onSelect={qrTypeSelectHandler}
-                icon={drawer.icon}
-                buttonId={drawer.name}
-                style={selectStyleHandler(drawer.name)}
-              />
-            );
-          })}
-        </div>
-        <div className="App__input_control-preset">
+      </div>
+      <div className="App__main__selector">
+        {Object.values(drawersNames).map((drawers) => {
+          return (
+            <ButtonIcon
+              key={drawers.name}
+              onSelect={drawerSelectHandler}
+              icon={drawers.icon}
+              buttonId={drawers.name}
+              style={selectStyleHandler(drawers.name)}
+            />
+          );
+        })}
+      </div>
+      <div className="App__main__selector">
         {Object.values(presetNames).map((preset) => {
-            return (
-              <ButtonIcon
-                key={preset.name}
-                onSelect={presetSelectHandler}
-                icon={preset.icon}
-                buttonId={preset.name}
-                style={selectStyleHandler(preset.name)}
-              />
-            );
-          })}
-        </div>
+          return (
+            <ButtonIcon
+              key={preset.name}
+              onSelect={presetSelectHandler}
+              icon={preset.icon}
+              buttonId={preset.name}
+              style={selectStyleHandler(preset.name)}
+            />
+          );
+        })}
       </div>
-      <div className="App__input_image">
-        <div className="App__input_image_colors">
-          <input
-            value={backgroundColor}
-            type="color"
-            disabled={preset && true}
-            onChange={(e) =>
-              setBackgroundColor((newColor) => (newColor = e.target.value))
-            }
-          />
 
-          <input
-            value={foregroundColor}
-            type="color"
-            onChange={(e) =>
-              setForegroundColor((newColor) => (newColor = e.target.value))
-            }
-            disabled={preset && true}
-          />
-        </div>
-        <QrCode image={qrImage} isLoading={isLoading} />
-      </div>
+      <QrCode image={qrImage} isLoading={isLoading} />
     </div>
   );
 };
