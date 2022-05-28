@@ -1,6 +1,8 @@
+import "./buttonicon.css";
+
 const ButtonIcon = ({ ...props }) => {
   return (
-    <div>
+    <div className="ButtonIcon">
       <img
         className={props.style}
         id={props.buttonId}
@@ -13,4 +15,3 @@ const ButtonIcon = ({ ...props }) => {
 };
 
 export default ButtonIcon;
-// icon, buttonId, onSelect, className

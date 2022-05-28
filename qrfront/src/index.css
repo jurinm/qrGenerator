@@ -4,6 +4,9 @@
     --color-mate: #414141;
     --color-red-pale: #ff6a5c;
     --color-pale: #ccdfcb;
+
+    /* Margins */
+    --margin-element: 0.4rem;
 }
 
 * {

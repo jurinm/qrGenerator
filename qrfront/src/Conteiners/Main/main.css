@@ -5,10 +5,7 @@
 }
 
 .App__main__selector {
+    width: 100%;
     display: flex;
-    gap: 0.4rem;
-}
-
-.App__main__selector img {
-    max-width: 100px;
+    justify-content: center;
 }

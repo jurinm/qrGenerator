@@ -1,0 +1,7 @@
+.ButtonIcon {
+    margin: var(--margin-element);
+}
+
+.ButtonIcon img {
+    max-width: 100px;
+}
