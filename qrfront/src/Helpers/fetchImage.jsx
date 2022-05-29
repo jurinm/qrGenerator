@@ -14,4 +14,4 @@ export async function FetchImage(text, backgroundColor, foregroundColor, drawer,
     .catch((ex) => console.log(ex));
 }
 
-//TODO: refactor arguments
+

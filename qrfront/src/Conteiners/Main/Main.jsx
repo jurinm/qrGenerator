@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import { FetchImage } from "../../Helpers/fetchImage";
 import { QrCode, ButtonIcon, Input } from "../../Components";
@@ -18,26 +18,40 @@ const Main = ({ props, type, placeholder }) => {
   const [drawerType, setDrawerType] = useState("square");
   const [preset, setPreset] = useState(null);
 
-  const fetchHandler = async (e) => {
-    setIsLoading((status) => (status = true));
-    setText((newText) => (newText = e));
-    const response = await FetchImage(
-      e,
-      backgroundColor,
-      foregroundColor,
-      drawerType,
-      preset
-    );
-    setIsLoading((status) => (status = false));
-    setQrImage((newImage) => (newImage = response));
-  };
+
+  const callBackTest = useCallback(
+    async (e) => {
+      
+        setIsLoading((status) => (status = true));
+        setText((newText) => (newText = e));
+        const response = await FetchImage(
+          text,
+          backgroundColor,
+          foregroundColor,
+          drawerType,
+          preset,
+          isLoading
+        );
+        setIsLoading((status) => (status = false));
+        setQrImage((newImage) => (newImage = response));
+     
+    },
+    [text, backgroundColor,foregroundColor, preset, drawerType],
+  )
+  
+
+  
 
   useEffect(() => {
-    if (text) fetchHandler(text, backgroundColor, foregroundColor, drawerType);
-  }, [text, backgroundColor, foregroundColor, drawerType, preset]);
+    if (text) callBackTest(text, backgroundColor, foregroundColor, drawerType);
+  }, [text, backgroundColor, foregroundColor, drawerType, callBackTest, preset]);
 
   const backgroundColorHandler = (e) => {
     setBackgroundColor((current) => (current = e));
+  };
+
+  const foregroundColorHandler = (e) => {
+    setForegroundColor((current) => (current = e));
   };
 
   const drawerSelectHandler = (e) => {
@@ -56,7 +70,7 @@ const Main = ({ props, type, placeholder }) => {
 
   const selectStyleHandler = (id) => {
     return drawerType === id || preset === id
-      ? "App_input_control-type_icon selected"
+      ? "button-selected"
       : "App_input_control-type_icon";
   };
 
@@ -67,8 +81,14 @@ const Main = ({ props, type, placeholder }) => {
           inputType="text"
           inputPlaceholder="URL"
           isDisabled={false}
-          inputOnChange={fetchHandler}
+          inputOnChange={callBackTest}
         />
+        <Input 
+        inputType='color'
+        isDisabled={preset && true} inputOnChange={backgroundColorHandler}/>
+        <Input 
+        inputType='color'
+        isDisabled={preset && true} inputOnChange={foregroundColorHandler}/>
       </div>
       <div className="App__main__selector">
         {Object.values(drawersNames).map((drawers) => {
@@ -96,7 +116,6 @@ const Main = ({ props, type, placeholder }) => {
           );
         })}
       </div>
-
       <QrCode image={qrImage} isLoading={isLoading} />
     </div>
   );

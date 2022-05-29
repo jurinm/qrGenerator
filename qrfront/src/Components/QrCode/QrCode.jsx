@@ -1,8 +1,10 @@
 import { Spiner } from "../../Components";
 
+import './qrcode.css'
+
 const QrCode = ({image, isLoading}) => {
   return (
-    <div>
+    <div className="QrCode">
       {isLoading ? (
           <Spiner />
         ) : (

@@ -1,8 +1,19 @@
 .App {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--color-teal);
+  overflow: hidden;
+}
+
+#root {
     background-color: var(--color-teal);
+}
+
+@media screen and (max-height: 700px) {
+  .App {
+    overflow: visible;
+    height: 100%;
+  }
 }

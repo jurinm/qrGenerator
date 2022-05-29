@@ -1,11 +1,19 @@
 .App__main {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
+    justify-items: center;
+    height: 100%;
+    margin-top: 10vh;
 }
 
 .App__main__selector {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+}
+
+.App__main__inputs {
+    width: 100%;
 }

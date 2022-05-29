@@ -9,6 +9,7 @@ const Input = ({...props}) => {
         disabled={props.isDisabled}
         onChange={(e) => props.inputOnChange(e.target.value)}
         id={props.inputId}
+        maxLength='240'
       />
     </div>
   )
