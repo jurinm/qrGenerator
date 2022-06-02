@@ -1,8 +1,8 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 
 import { qrContext } from "../store/store";
 
-export function useFetchImage() {
+export function useQrFetch() {
   const { qrSettings } = useContext(qrContext);
   const [fetchedImage, setFetchedImage] = useState();
 
@@ -17,23 +17,22 @@ export function useFetchImage() {
       preset: qrSettings.preset,
     }),
   };
-  async function getQr() {
+  const getQr = useCallback(async () => {
     try {
       const response = await fetch(
         "http://127.0.0.1:5000/generate",
         requestOptions
       );
       const data = await response.json();
-      setFetchedImage((image) => (image = data.qrImage));
+      setFetchedImage((newImage) => (newImage = data.qrImage));
     } catch (ex) {
       return console.error(ex);
     }
-  }
+  }, [qrSettings, requestOptions]);
 
   useEffect(() => {
-    console.log(qrSettings)
     getQr();
-  }, [qrSettings]);
+  }, [getQr]);
 
   return fetchedImage;
 }

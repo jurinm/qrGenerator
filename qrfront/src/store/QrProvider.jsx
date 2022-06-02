@@ -16,42 +16,50 @@ const QrProvider = ({ children }) => {
 
   const setText = (newText) => {
     dispatch({
-      type: 'setText',
-      payload: { ...qrSettings, 'text':newText  }
+      type: "setText",
+      payload: { ...qrSettings, text: newText },
     });
-    
   };
 
   const setBackground = (newBackground) => {
     dispatch({
-      type: 'setBackground',
-      payload: { ...qrSettings, 'backgroundColor':newBackground  }
+      type: "setBackground",
+      payload: { ...qrSettings, backgroundColor: newBackground },
     });
   };
 
   const setForeground = (newForeground) => {
     dispatch({
-      type: 'setForeground',
-      payload: { ...qrSettings, 'foregroundColor':newForeground  }
+      type: "setForeground",
+      payload: { ...qrSettings, foregroundColor: newForeground },
     });
   };
 
   const setDrawer = (newDrawer) => {
     dispatch({
-      type: 'setBackground',
-      payload: { ...qrSettings, 'drawer':newDrawer  }
+      type: "setDrawer",
+      payload: { ...qrSettings, drawer: newDrawer },
     });
   };
 
   const setPreset = (newPreset) => {
     dispatch({
-      type: 'setPreset',
-      payload: { ...qrSettings, 'preset':newPreset  }
+      type: "setPreset",
+      payload: { ...qrSettings, preset: newPreset },
     });
   };
 
   return (
-    <qrContext.Provider value={{ qrSettings, setText, setBackground,setPreset, setDrawer, setForeground }}>
+    <qrContext.Provider
+      value={{
+        qrSettings,
+        setText,
+        setBackground,
+        setPreset,
+        setDrawer,
+        setForeground,
+      }}
+    >
       {children}
     </qrContext.Provider>
   );

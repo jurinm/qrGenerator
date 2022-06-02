@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { Spiner } from "../../Components";
-import { useFetchImage } from "../../Helpers/fetchImage";
+import { useQrFetch } from "../../Hooks/useQrFetch";
 import './qrcode.css'
 
 const QrCode = () => {
 
-  const qrSrc = useFetchImage()
+  const qrSrc = useQrFetch();
 
   return (
     <div className="QrCode">
