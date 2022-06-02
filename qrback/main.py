@@ -14,10 +14,11 @@ CORS(app)
 def index():
     if request.method == 'POST':
         data = request.json
-
-        print(data)
-        result_file = gen(data['text'], data['background'], data['foreground'], data['drawer'], data['preset'])
-        return jsonify({'qrImage': result_file}), 201
+        if 'text' in data:
+            print(data)
+            result_file = gen(data['text'], data['background'], data['foreground'], data['drawer'], data['preset'])
+            return jsonify({'qrImage': result_file}), 201
+        return jsonify({'qrImage': 'no imege'}), 201
     else:
         return 'test'
 

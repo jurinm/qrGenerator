@@ -7,10 +7,6 @@
   overflow: hidden;
 }
 
-#root {
-    background-color: var(--color-teal);
-}
-
 @media screen and (max-height: 700px) {
   .App {
     overflow: visible;

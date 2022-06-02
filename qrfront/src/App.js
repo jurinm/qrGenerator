@@ -1,19 +1,21 @@
-import { Navbar } from './Components';
+import { Navbar } from "./Components";
 
-import { Main } from './Conteiners';
+import { Main } from "./Conteiners";
 
-import './App.css'
+import QrProvider from "./store/QrProvider";
+
+import "./App.css";
 
 //TODO: add PWA
 
 function App() {
   return (
     <div className="App">
-      <Main />
+      <QrProvider>
+        <Main />
+      </QrProvider>
     </div>
   );
 }
 
 export default App;
-
-

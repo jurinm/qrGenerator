@@ -1,21 +1,15 @@
+import { Suspense } from "react";
 import { Spiner } from "../../Components";
-
+import { useFetchImage } from "../../Helpers/fetchImage";
 import './qrcode.css'
 
-const QrCode = ({image, isLoading}) => {
+const QrCode = () => {
+
+  const qrSrc = useFetchImage()
+
   return (
     <div className="QrCode">
-      {isLoading ? (
-          <Spiner />
-        ) : (
-          <>
-            {image ? (
-              <img src={image.qrImage} alt="Your QR code" />
-            ) : (
-              <h3>Your Qr code, will apear here</h3>
-            )}
-          </>
-        )}
+    {qrSrc ? <img src={qrSrc} alt='Your Qr Image'/> : <Spiner />}
     </div>
   );
 };
