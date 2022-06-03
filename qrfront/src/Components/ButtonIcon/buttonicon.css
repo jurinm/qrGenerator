@@ -1,14 +1,15 @@
 .ButtonIcon {
+    transition: .4s ease-in;
     margin: var(--margin-element);
 }
 
+.ButtonIcon img {
+    transition: .2s ease;
+    max-width: 100px;
+}
 .ButtonIcon:hover {
     cursor: pointer;
     filter: brightness(75%);
-}
-
-.ButtonIcon img {
-    max-width: 100px;
 }
 
 .button-selected {

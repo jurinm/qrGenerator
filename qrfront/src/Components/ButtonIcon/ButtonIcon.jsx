@@ -7,7 +7,7 @@ const ButtonIcon = ({ ...props }) => {
   return (
     <div className='ButtonIcon ' >
       <img
-        className={props.selected === props.buttonId && "button-selected"}
+        className={props.selected === props.buttonId ? "button-selected" : ''}
         id={props.buttonId}
         onClick={(e) => props.iconOnClick(e.target.id)}
         src={props.icon}
