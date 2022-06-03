@@ -1,11 +1,11 @@
-import { useContext, useState, useEffect, useCallback } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import { qrContext } from "../store/store";
 
 export function useQrFetch() {
   const { qrSettings } = useContext(qrContext);
   const [fetchedImage, setFetchedImage] = useState();
-
+  const [isFetching, setIsFetching] = useState(true);
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -17,22 +17,14 @@ export function useQrFetch() {
       preset: qrSettings.preset,
     }),
   };
-  const getQr = useCallback(async () => {
-    try {
-      const response = await fetch(
-        "http://127.0.0.1:5000/generate",
-        requestOptions
-      );
-      const data = await response.json();
-      setFetchedImage((newImage) => (newImage = data.qrImage));
-    } catch (ex) {
-      return console.error(ex);
-    }
-  }, [qrSettings, requestOptions]);
 
   useEffect(() => {
-    getQr();
-  }, [getQr]);
-
-  return fetchedImage;
+    setIsFetching((newState) => (newState = true));
+    fetch("http://127.0.0.1:5000/generate", requestOptions)
+      .then((response) => response.json())
+      .then((data) => setFetchedImage((newState) => (newState = data.qrImage)))
+      .catch((er) => console.log(er))
+      .finally(() => setIsFetching((newState) => (newState = false)));
+  }, [qrSettings]);
+  return { isFetching, fetchedImage };
 }

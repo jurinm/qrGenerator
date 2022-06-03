@@ -1,4 +1,4 @@
-import { useContext, useDeferredValue } from "react";
+import { useContext } from "react";
 
 import { qrContext } from "../../store/store";
 
@@ -11,9 +11,6 @@ import Selector from "../Selector/Selector";
 const Main = () => {
   const { setText, setBackground, setForeground, setDrawer, setPreset } =
     useContext(qrContext);
-
-  
-
 
   return (
     <div className="App__main">
