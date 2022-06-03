@@ -1,12 +1,15 @@
+import {useState} from 'react'
+
 import "./buttonicon.css";
 
 const ButtonIcon = ({ ...props }) => {
+
   return (
-    <div className="ButtonIcon">
+    <div className='ButtonIcon ' >
       <img
-        className={props.style}
+        className={props.selected === props.buttonId && "button-selected"}
         id={props.buttonId}
-        onClick={(e) => props.onSelect(e.target.id)}
+        onClick={(e) => props.iconOnClick(e.target.id)}
         src={props.icon}
         alt={`Make ${props.buttonId} qr code`}
       />

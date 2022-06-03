@@ -14,7 +14,7 @@ const Main = () => {
 
   return (
     <div className="App__main">
-      <Input inputType={"text"} inputOnChange={setText} />
+      <Input inputType={"text"} inputOnChange={setText} inputPlaceholder='Enter URL'/>
       <Input inputType={"color"} inputOnChange={setBackground}/>
       <Input inputType={"color"} inputOnChange={setForeground}/>
       <Selector />

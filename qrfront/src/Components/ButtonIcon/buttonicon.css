@@ -2,6 +2,11 @@
     margin: var(--margin-element);
 }
 
+.ButtonIcon:hover {
+    cursor: pointer;
+    filter: brightness(75%);
+}
+
 .ButtonIcon img {
     max-width: 100px;
 }
@@ -9,5 +14,4 @@
 .button-selected {
     border-radius: .5rem;
     border: 2px var(--color-red-pale) solid;
-
 }
