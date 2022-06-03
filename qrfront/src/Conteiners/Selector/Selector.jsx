@@ -25,8 +25,8 @@ const Selector = () => {
 
   const selectPresetHandler = (e) => {
     if (selectedPreset === e){
-      setSelectedPreset(newSelect => newSelect = '')
-      setPreset('')
+      setSelectedPreset(newSelect => newSelect = null)
+      setPreset(null)
     }
     if(selectedPreset !== e){
       setSelectedPreset(newSelect => newSelect = e)

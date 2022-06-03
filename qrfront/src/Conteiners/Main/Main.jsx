@@ -9,14 +9,14 @@ import { QrCode, Input } from "../../Components";
 import Selector from "../Selector/Selector";
 
 const Main = () => {
-  const { setText, setBackground, setForeground, setDrawer, setPreset } =
+  const { qrSettings, setText, setBackground, setForeground, setDrawer, setPreset } =
     useContext(qrContext);
 
   return (
     <div className="App__main">
       <Input inputType={"text"} inputOnChange={setText} inputPlaceholder='Enter URL'/>
-      <Input inputType={"color"} inputOnChange={setBackground}/>
-      <Input inputType={"color"} inputOnChange={setForeground}/>
+      <Input inputType={"color"} inputOnChange={setBackground} isDisabled={qrSettings.preset && true}/>
+      <Input inputType={"color"} inputOnChange={setForeground} isDisabled={qrSettings.preset}/>
       <Selector />
       <QrCode />
     </div>
