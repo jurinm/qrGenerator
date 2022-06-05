@@ -13,6 +13,7 @@ const Input = ({...props}) => {
 
   return (
     <div className={styles.input}>
+      <label htmlFor={props?.inputId}>{props.labelText}</label>
       <input 
         type={props.inputType}
         placeholder={props.inputPlaceholder}

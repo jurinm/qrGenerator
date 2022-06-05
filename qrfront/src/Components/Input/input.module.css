@@ -1,9 +1,12 @@
 .input {
-  margin: 1px;
+  color: var( --color-pale);
+  padding: var(--margin-element);
+  font-size: 1.2rem;
   width: 100%;
 }
 
 .input input {
   width: 100%;
+  color: var(--color-teal);
   height: 2.4rem;
 }

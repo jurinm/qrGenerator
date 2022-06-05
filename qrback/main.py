@@ -22,17 +22,24 @@ def index():
             return 'Something went wrong'
     except Exception as ex:
         error_log = f'{datetime.now()} An error happened - {ex}'
-        with open('log.txt', 'w') as f:
-            f.writelines(error_log)
+        with open('log.txt', 'a') as f:
+            f.writelines(f'\n{error_log}')
+        return "Something went wrong", 400
 
 
 @app.route('/auth', methods=['GET', 'POST'])
 def auth():
-    if request.method == 'POST':
-        name = request.json
-        print(name)
-        return name
-    return 'test'
+    try:
+        if request.method == 'POST':
+            name = request.json
+            print(name)
+            return name
+        return 'test'
+    except Exception as ex:
+        error_log = f'{datetime.now()} An error happened - {ex}'
+        with open('log.txt', 'a') as f:
+            f.writelines(f'\n{error_log}')
+        return "Something went wrong", 400
 
 
 if __name__ == '__main__':
