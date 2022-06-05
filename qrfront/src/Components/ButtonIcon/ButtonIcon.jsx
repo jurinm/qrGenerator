@@ -1,11 +1,11 @@
-import "./buttonicon.css";
+import styles from "./buttonicon.module.css";
 
 const ButtonIcon = ({ ...props }) => {
   
   return (
-    <div className='ButtonIcon ' >
+    <div className={styles.buttonIcon} >
       <img
-        className={props.selected === props.buttonId ? "button-selected" : ''}
+        className={props.selected === props.buttonId ? styles.buttonSelected : ''}
         id={props.buttonId}
         onClick={(e) => props.iconOnClick(e.target.id)}
         src={props.icon}

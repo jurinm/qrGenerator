@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { qrContext } from "../../store/store";
 
-import "./main.css";
+import styles from  "./main.module.css";
 
 import { QrCode, Input, Auth } from "../../Components";
 
@@ -13,7 +13,7 @@ const Main = () => {
     useContext(qrContext);
 
   return (
-    <div className="App__main">
+    <div className={styles.main}>
       <Input inputType={"text"} inputOnChange={setText} inputPlaceholder='Enter URL'/>
       <Input inputType={"color"} inputOnChange={setBackground} isDisabled={qrSettings.preset && true} initialValue={qrSettings.backgroundColor}/>
       <Input inputType={"color"} inputOnChange={setForeground} isDisabled={qrSettings.preset && true} initialValue={qrSettings.foregroundColor}/>

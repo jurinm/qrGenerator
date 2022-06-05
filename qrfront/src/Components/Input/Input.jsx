@@ -1,8 +1,7 @@
-import styles from './input.css';
+import styles from './input.module.css';
 
 const Input = ({...props}) => {
   let queryDebounce;
-  console.log(styles.input)
   const inputHandler = (e) => {
     
     clearTimeout(queryDebounce)
@@ -13,7 +12,7 @@ const Input = ({...props}) => {
   };
 
   return (
-    <div className='Input'>
+    <div className={styles.input}>
       <input 
         type={props.inputType}
         placeholder={props.inputPlaceholder}

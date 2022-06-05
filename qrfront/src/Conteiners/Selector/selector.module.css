@@ -1,10 +1,10 @@
-.Selector {
+.selector {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
-.Selector > div {
+.selector > div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

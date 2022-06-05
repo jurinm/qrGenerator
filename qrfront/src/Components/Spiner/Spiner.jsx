@@ -1,7 +1,8 @@
-import './spiner.css'
+import styles from './spiner.module.css'
+
 const Spiner = () => {
   return (
-    <div className="App__load">
+    <div className={styles.load}>
       <hr />
       <hr />
       <hr />

@@ -1,4 +1,4 @@
-.QrCode {
+.qrCode {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +7,7 @@
     background-color: var(--color-teal);
 }
 
-.QrCode img {
+.qrCode img {
     margin: var(--margin-element);
     max-width: 350px;
 }

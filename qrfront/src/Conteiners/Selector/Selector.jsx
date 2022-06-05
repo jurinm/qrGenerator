@@ -2,7 +2,7 @@ import { useContext, useState, useMemo, useCallback } from "react";
 
 import { qrContext } from "../../store/store";
 
-import "./selector.css";
+import styles from "./selector.module.css";
 
 import { drawersNames, presetNames } from "../../consts";
 
@@ -66,11 +66,11 @@ const Selector = () => {
 
 
   return (
-    <div className="Selector">
-      <div className="Selector__drawers">
+    <div className={styles.selector}>
+      <div >
         {drawerMemo}
       </div>
-      <div className="Selector__presets">
+      <div >
         {presetMemo}
       </div>
     </div>
