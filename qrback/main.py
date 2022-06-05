@@ -1,26 +1,38 @@
-import flask
+from datetime import datetime
 from flask_cors import CORS
 
 from qr_generator.generator import gen
-from flask import Flask, url_for, send_from_directory, request, jsonify
+from flask import Flask, request, jsonify
 
 app = Flask(__name__, static_url_path='/static')
 CORS(app)
 
-# TODO: clear old files
-
 
 @app.route('/generate', methods=['GET', 'POST'])
 def index():
+    try:
+        if request.method == 'POST':
+            data = request.json
+            if 'text' in data:
+                print(data)
+                result_file = gen(data['text'], data['background'], data['foreground'], data['drawer'], data['preset'])
+                return jsonify({'qrImage': result_file}), 201
+            return jsonify({'qrImage': 'no image'}), 201
+        else:
+            return 'Something went wrong'
+    except Exception as ex:
+        error_log = f'{datetime.now()} An error happened - {ex}'
+        with open('log.txt', 'w') as f:
+            f.writelines(error_log)
+
+
+@app.route('/auth', methods=['GET', 'POST'])
+def auth():
     if request.method == 'POST':
-        data = request.json
-        if 'text' in data:
-            print(data)
-            result_file = gen(data['text'], data['background'], data['foreground'], data['drawer'], data['preset'])
-            return jsonify({'qrImage': result_file}), 201
-        return jsonify({'qrImage': 'no imege'}), 201
-    else:
-        return 'test'
+        name = request.json
+        print(name)
+        return name
+    return 'test'
 
 
 if __name__ == '__main__':

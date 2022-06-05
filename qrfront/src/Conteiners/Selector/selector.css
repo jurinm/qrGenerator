@@ -1,8 +1,12 @@
 .Selector {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .Selector > div {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }

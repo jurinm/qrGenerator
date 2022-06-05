@@ -6,6 +6,7 @@
 .ButtonIcon img {
     transition: .2s ease;
     max-width: 100px;
+    flex-shrink: 1;
 }
 .ButtonIcon:hover {
     cursor: pointer;
