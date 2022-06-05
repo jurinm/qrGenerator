@@ -1,9 +1,10 @@
 import qrcode
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.colormasks import RadialGradiantColorMask, SolidFillColorMask, SquareGradiantColorMask
-from qrcode.image.svg import SvgImage
+
 import io
 import base64
+
 from PIL import ImageColor
 
 from qrcode.image.styles.moduledrawers import RoundedModuleDrawer, SquareModuleDrawer, GappedSquareModuleDrawer, \

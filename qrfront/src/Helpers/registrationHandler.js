@@ -12,7 +12,8 @@ function registrationHandler(inputData) {
   };
 
   fetch(`${endPoints.registration}`, requestOptions)
-    .then((response) => response.json)
+    .then((response) => response.json())
+    .then((res) => console.log(res))
     .catch((er) => console.log(er))
     .finally((res) => res);
 }

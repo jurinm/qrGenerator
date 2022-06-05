@@ -7,6 +7,7 @@
   height: 100vh;
   background-color: var(--color-teal);
   overflow: hidden;
+  font-family: var(--font-main);
 }
 
 @media screen and (max-height: 700px) {
