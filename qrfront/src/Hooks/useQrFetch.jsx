@@ -2,6 +2,8 @@ import { useContext, useState, useEffect } from "react";
 
 import { qrContext } from "../store/store";
 
+import { endPoints } from "../consts";
+
 export function useQrFetch() {
   const { qrSettings } = useContext(qrContext);
   const [fetchedImage, setFetchedImage] = useState();
@@ -20,7 +22,7 @@ export function useQrFetch() {
 
   useEffect(() => {
     setIsFetching((newState) => (newState = true));
-    fetch("http://127.0.0.1:5000/generate", requestOptions)
+    fetch(`${endPoints.generator}`, requestOptions)
       .then((response) => response.json())
       .then((data) => setFetchedImage((newState) => (newState = data.qrImage)))
       .catch((er) => console.log(er))

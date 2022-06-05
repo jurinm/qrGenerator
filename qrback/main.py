@@ -27,8 +27,8 @@ def index():
         return "Something went wrong", 400
 
 
-@app.route('/auth', methods=['GET', 'POST'])
-def auth():
+@app.route('/registration', methods=['GET', 'POST'])
+def registration():
     try:
         if request.method == 'POST':
             name = request.json

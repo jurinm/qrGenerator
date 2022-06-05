@@ -15,5 +15,5 @@
 
 .buttonSelected {
     border-radius: .5rem;
-    border: 2px var(--color-red-pale) solid;
+    border: 3px var(--color-red-pale) solid;
 }

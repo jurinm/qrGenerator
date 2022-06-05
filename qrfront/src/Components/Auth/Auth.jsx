@@ -1,14 +1,22 @@
-import React from "react";
+import { registrationHandler } from "../../Helpers";
 
 const Auth = () => {
 
+   const formHandler = (e) =>{
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const registrationData = Object.fromEntries(data.entries());
+    registrationHandler(registrationData)
+    e.target.reset()
+   };
+   
   return (
     <div className="Auth">
-      <form action="http://127.0.0.1:5000/auth" method="post" request>
+      <form onSubmit={formHandler}>
         <input type="text" name="nickname" id="nickname"/>
         <input type="text" name="email" id="email"/>
         <input type="password" name="password" id="password" autoComplete="on"/>
-        <input type="password" name="password-check" id="password-check" autoComplete="on"/>
+        <input type="password" name="passwordCheck" id="passwordCheck" autoComplete="on"/>
         <button>Send</button>
       </form>
     </div>

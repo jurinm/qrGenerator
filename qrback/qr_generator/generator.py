@@ -21,7 +21,7 @@ def gen(text: str, background: str, foreground: str, drawer: str, preset: str):
         box_size=10,
         border=1,
     )
-# TODO: решить проблему с задержкой цветов
+
     qr.add_data(text)
 
     background_rgb = ImageColor.getcolor(background, 'RGB')
