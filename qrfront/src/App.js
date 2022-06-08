@@ -1,8 +1,9 @@
-import { Navbar } from "./Components";
+import { Auth } from "./Components";
 
-import { Main } from "./Conteiners";
+import { Main, Modal } from "./Conteiners";
 
 import QrProvider from "./store/QrProvider";
+import AuthProvider from "./store/AuthProvider";
 
 import "./App.css";
 
@@ -11,9 +12,14 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <QrProvider>
-        <Main />
-      </QrProvider>
+      <AuthProvider>
+        <QrProvider>
+          <Main />
+          <Modal>
+            <Auth />
+          </Modal>
+        </QrProvider>
+      </AuthProvider>
     </div>
   );
 }

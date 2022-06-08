@@ -1,0 +1,9 @@
+.signup {
+    background-color: var(--color-teal);
+    max-width: 500px;
+    max-height: auto;
+    border: 4px var(--color-red-pale) solid;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 50px -8px var(--color-red-pale);
+    z-index: 15;
+}

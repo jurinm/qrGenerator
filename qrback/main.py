@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
@@ -56,6 +56,46 @@ def registration():
         with open('log.txt', 'a') as f:
             f.writelines(f'\n{error_log}')
         return "Something went wrong", 400
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    if request.method == 'POST':
+        auth = request.json
+        print(auth)
+        if not auth or not auth['email'] or not auth['password']:
+            return make_response('Wrong email or password', 401, {'WWW-Authenticate': 'Basic realm:"Login required"'})
+
+        from db.querys import get_user
+
+        user = get_user(auth)
+        print(user)
+        if user:
+            from jwt_auth.oath import generate_token
+            return generate_token(user, auth)
+
+        return make_response('Wrong email or password', 401, {'WWW-Authenticate': 'Basic realm:"Login required"'})
+
+
+@app.route('/check', methods=['POST'])
+def token_check():
+    if request.method == 'POST':
+        token = request.json
+        print(token)
+        if not token['token']:
+            return make_response('Wrong email or password', 401, {'WWW-Authenticate': 'Basic realm:"Login required"'})
+        from jwt_auth.oath import verify_token
+        print(token)
+        verification_result = verify_token(token['token'])
+        print(verification_result)
+        if verification_result:
+            from db.querys import verify_user
+
+            if verify_user(verification_result['id']):
+                print(verification_result)
+                return make_response('Token ok', 200)
+
+        return make_response('Incorrect or expired token', 401, {'WWW-Authenticate': 'Basic realm:"Login required"'})
 
 
 if __name__ == '__main__':

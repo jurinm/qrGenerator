@@ -1,5 +1,5 @@
 import { useContext } from "react";
-
+import { AuthContext } from "../../store/store";
 import { qrContext } from "../../store/store";
 
 import styles from "./main.module.css";
@@ -9,12 +9,11 @@ import { QrCode, Input, Auth } from "../../Components";
 import Selector from "../Selector/Selector";
 
 const Main = () => {
-  const {
-    qrSettings,
-    setText,
-    setBackground,
-    setForeground,
-  } = useContext(qrContext);
+  const { qrSettings, setText, setBackground, setForeground } =
+    useContext(qrContext);
+
+  const { token } = useContext(AuthContext);
+  console.log(token);
 
   return (
     <div className={styles.main}>
@@ -40,7 +39,6 @@ const Main = () => {
       />
       <Selector />
       <QrCode />
-      <Auth />
     </div>
   );
 };

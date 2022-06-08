@@ -1,5 +1,3 @@
-import { use } from "react";
-
 const reducer = (state, action) => {
   if (action.type === "setText") {
     return { ...state, text: action.payload.text };

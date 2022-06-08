@@ -1,0 +1,28 @@
+.modalOpen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(65, 65, 65, .9);
+    z-index: 10;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+
+.modalClosed {
+    display: none;
+}
+
+  .closeButton {
+      position: absolute;
+      top: 3.2rem;
+      right: 3.2rem;
+      color: white;
+  }
+
+  
+  
