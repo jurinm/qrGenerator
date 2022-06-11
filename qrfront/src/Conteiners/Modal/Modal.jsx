@@ -1,16 +1,14 @@
-import { useState } from "react";
-
 import styles from "./modal.module.css";
 
-const Modal = ({ children }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const Modal = ({ children, ...props }) => {
+  if (props.isModalOpen)
   return (
-    <div className={isModalOpen ? styles.modalOpen : styles.modalClosed}>
+    <div className={styles.modal}>
       <div
-        onClick={() => setIsModalOpen((newState) => (newState = false))}
+        onClick={() => props.setIsModalOpen((newState) => (newState = false))}
         className={styles.closeButton}
       >
-        X
+        
       </div>
       {children}
     </div>

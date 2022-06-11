@@ -74,7 +74,8 @@ def login():
             from jwt_auth.oath import generate_token
             return generate_token(user, auth)
 
-        return make_response('Wrong email or password', 401, {'WWW-Authenticate': 'Basic realm:"Login required"'})
+        return make_response('Wron'
+                             'g email or password', 401, {'WWW-Authenticate': 'Basic realm:"Login required"'})
 
 
 @app.route('/check', methods=['POST'])

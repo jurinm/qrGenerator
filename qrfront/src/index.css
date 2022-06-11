@@ -5,7 +5,9 @@
   --color-teal: #056571;
   --color-mate: #414141;
   --color-red-pale: #ff6a5c;
-  --color-pale: #ccdfcb;
+  --color-red-pale-inactive: #ff8d83;
+  --color-pale: #e6ece6;
+  --color-red-pale-hover: #ce5348;
 
   /* Margins */
   --margin-element: 0.4rem;

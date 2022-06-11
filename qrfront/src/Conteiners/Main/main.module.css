@@ -2,6 +2,4 @@
     display: flex;
     flex-direction: column;
     justify-items: center;
-    height: 100%;
-    margin-top: 10vh;
 }

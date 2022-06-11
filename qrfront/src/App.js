@@ -1,4 +1,4 @@
-import { Auth } from "./Components";
+import { Auth, Navbar } from "./Components";
 
 import { Main, Modal } from "./Conteiners";
 
@@ -14,10 +14,8 @@ function App() {
     <div className="App">
       <AuthProvider>
         <QrProvider>
+          <Navbar />
           <Main />
-          <Modal>
-            <Auth />
-          </Modal>
         </QrProvider>
       </AuthProvider>
     </div>

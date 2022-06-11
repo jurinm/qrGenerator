@@ -37,7 +37,7 @@ const SignUp = () => {
           inputType={"password"}
           inputName={"passwordCheck"}
         />
-        <Button buttonText={'Sign Up'} />
+        <Button>Sign Up</Button>
       </Form>
     </div>
   );

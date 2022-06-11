@@ -1,4 +1,4 @@
-import Navbar from "./Navbar/Navbar";
+import Navbar from "../Conteiners/Navbar/Navbar";
 import Auth from "../Conteiners/Auth/Auth";
 import Input from "./Input/Input";
 import Spiner from "./Spiner/Spiner";

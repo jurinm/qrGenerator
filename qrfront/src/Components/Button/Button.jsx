@@ -1,11 +1,17 @@
-import styles from './button.module.css'
+import styles from "./button.module.css";
 
-const Button = ({...props}) => {
+const Button = ({ children, ...props }) => {
   return (
     <div className={styles.buttonConteiner}>
-        <button className={styles.button} type='submit'>{props?.buttonText}</button>
+      <button
+        onClick={props.buttonClickHandler}
+        className={styles.button}
+        type="submit"
+      >
+        {children}
+      </button>
     </div>
-  )
-}
+  );
+};
 
 export default Button;
