@@ -1,27 +1,56 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../store/store";
-import { SignUp, Login } from "../../Components";
-import { loginHandler } from "../../Helpers";
+import { SignUp, Login, Spiner } from "../../Components";
+import { endPoints } from "../../consts";
 import styles from "./auth.module.css";
 
 const Auth = () => {
-  const { setToken } = useContext(AuthContext);
+  const { userData, setUserData } = useContext(AuthContext);
   const [selected, setSelected] = useState("signin");
+  const [isLoading, setIsLoading] = useState(false);
 
   const selectHandler = () => {
-    if (selected === "signin") return <Login />;
+    if (isLoading) return <Spiner />
+    if (selected === "signin") return <Login loading={isLoading} credentials={userData} isSignedIn={userData?.token ? true : false} authHandler ={{loginHandler , signOut}}/>;
     if (selected === "signup") return <SignUp />;
+
   };
 
-  const logHandler = async (e) => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const loginData = Object.fromEntries(data.entries());
-    const token = await loginHandler(loginData);
-    localStorage.setItem("token", token);
-    setToken((newToken) => (newToken = token));
-    e.target.reset();
-  };
+  function signOut () {
+    localStorage.removeItem("token")
+    localStorage.removeItem("nickname")
+    setUserData(out => out = {nickname: null, token: null})
+  };  
+
+  function loginHandler(inputData) {
+    setIsLoading(curr => curr = true)
+    setTimeout(() => {
+    
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: inputData.email,
+        password: inputData.password,
+      })
+    };
+
+    
+      fetch(`${endPoints.login}`, requestOptions)
+      .then((response) => response.json())
+      .then((userData) => {
+        console.log(userData)
+        localStorage.setItem("token", userData.token)
+        localStorage.setItem("nickname", userData.nickname)
+        setUserData(newUserData => newUserData = userData)
+        console.log(userData)
+      })
+      .catch((er) => console.error(er))
+      .finally(setIsLoading(curr => curr = false))
+    }, 1200);
+  
+    
+  }
 
   return (
     <div className={styles.auth}>

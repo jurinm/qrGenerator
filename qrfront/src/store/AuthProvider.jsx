@@ -3,22 +3,30 @@ import { AuthContext } from "./store";
 import useTokenVerify from "../Hooks/useTokenVerify";
 
 const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
   const localToken = localStorage.getItem("token");
-  const isTokenValid = useTokenVerify(localToken);
+  const localNickname = localStorage.getItem("nickname");
+
+  const [userData, setUserData] = useState({
+    nickname: localNickname,
+    token: localToken,
+  });
+  console.log(userData);
+  const isUserData = useTokenVerify(localToken);
 
   const authState = () => {
-    setToken((currentToken) => (currentToken = localToken));
+    setUserData(
+      (current) => (current = { nickname: localNickname, token: localToken })
+    );
   };
   useEffect(() => {
-    if (isTokenValid) authState();
-  }, [isTokenValid]);
+    if (isUserData) authState();
+  }, [isUserData]);
 
   return (
     <AuthContext.Provider
       value={{
-        token,
-        setToken,
+        userData,
+        setUserData,
       }}
     >
       {children}

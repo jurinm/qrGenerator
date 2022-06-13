@@ -1,4 +1,4 @@
-const reducer = (state, action) => {
+const qrReducer = (state, action) => {
   if (action.type === "setText") {
     return { ...state, text: action.payload.text };
   }
@@ -16,4 +16,4 @@ const reducer = (state, action) => {
   }
 };
 
-export default reducer;
+export default qrReducer;

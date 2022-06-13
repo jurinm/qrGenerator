@@ -1,6 +1,7 @@
 import { endPoints } from "../consts";
 
 async function loginHandler(inputData) {
+  console.log(inputData)
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -12,10 +13,11 @@ async function loginHandler(inputData) {
 
   const response = await fetch(`${endPoints.login}`, requestOptions)
     .then((response) => response.json())
-    .then((token) => token.token)
+    .then((userData) => localStorage.setItem("userData", userData))
     .catch((er) => console.error(er))
     .finally((token) => console.log(token));
-  return response;
+    console.log(response)
+    return response;
 }
 
 export default loginHandler;

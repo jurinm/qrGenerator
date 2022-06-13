@@ -2,7 +2,7 @@ import { qrContext } from "./store";
 
 import { useState, useReducer } from "react";
 
-import reducer from "./reducer";
+import qrReducer from "./qrReducer";
 
 const QrProvider = ({ children }) => {
   const initialState = {
@@ -12,7 +12,7 @@ const QrProvider = ({ children }) => {
     drawer: "square",
     preset: null,
   };
-  const [qrSettings, dispatch] = useReducer(reducer, initialState);
+  const [qrSettings, dispatch] = useReducer(qrReducer, initialState);
 
   const setText = (newText) => {
     dispatch({

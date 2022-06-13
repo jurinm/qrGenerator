@@ -8,7 +8,7 @@ import { drawersNames, presetNames } from "../../consts";
 
 import { ButtonIcon } from "../../Components";
 
-const Selector = () => {
+const Selector = ({...props}) => {
   const { setDrawer, setPreset } = useContext(qrContext);
 
   const [selectedDrawer, setSelectedDrawer] = useState("square");
@@ -61,8 +61,16 @@ const Selector = () => {
         />
       );
     }),
-    [selectPresetHandler, selectedPreset]
+    [selectPresetHandler, selectedPreset, props.auth]
   );
+
+  const noAuth = () => {
+    return (
+      <div className="">
+        <h2>Please sign in to use social media presets</h2>
+      </div>
+    )
+  };
 
 
   return (
@@ -71,7 +79,7 @@ const Selector = () => {
         {drawerMemo}
       </div>
       <div >
-        {presetMemo}
+        {props.auth ? presetMemo : noAuth()}
       </div>
     </div>
   );

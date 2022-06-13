@@ -24,7 +24,7 @@ def generate_token(user, auth):
                             'exp': datetime.utcnow() + timedelta(minutes=int(token_exp_time))},
                            secret_key,
                            algorithm=algorithm)
-        return {'token': token}
+        return token
 
     return make_response('Wrong email or password', 401, {'WWW-Authenticate': 'Basic realm:"Login required"'})
 

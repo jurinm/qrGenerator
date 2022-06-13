@@ -8,12 +8,13 @@ import { QrCode, Input, Auth } from "../../Components";
 
 import Selector from "../Selector/Selector";
 
+
 const Main = () => {
   const { qrSettings, setText, setBackground, setForeground } =
     useContext(qrContext);
-
-  const { token } = useContext(AuthContext);
-  console.log(token);
+    
+  const { userData } = useContext(AuthContext);
+  console.log(userData)
 
   return (
     <div className={styles.main}>
@@ -37,7 +38,7 @@ const Main = () => {
         isDisabled={qrSettings.preset && true}
         initialValue={qrSettings.foregroundColor}
       />
-      <Selector />
+      <Selector auth={userData.token}/>
       <QrCode />
     </div>
   );

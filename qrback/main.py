@@ -62,17 +62,20 @@ def registration():
 def login():
     if request.method == 'POST':
         auth = request.json
-        print(auth)
+
         if not auth or not auth['email'] or not auth['password']:
             return make_response('Wrong email or password', 401, {'WWW-Authenticate': 'Basic realm:"Login required"'})
 
         from db.querys import get_user
-
         user = get_user(auth)
-        print(user)
+
         if user:
             from jwt_auth.oath import generate_token
-            return generate_token(user, auth)
+            user_token = generate_token(user, auth)
+            print(user_token)
+            print(user.nickname)
+            print(jsonify({'nickname': user.nickname, 'token': user_token}))
+            return jsonify({'nickname': user.nickname, 'token': user_token})
 
         return make_response('Wron'
                              'g email or password', 401, {'WWW-Authenticate': 'Basic realm:"Login required"'})
