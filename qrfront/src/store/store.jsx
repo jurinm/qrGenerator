@@ -1,6 +1,10 @@
-import { createContext } from "react";
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "../Conteiners/Auth/authSlice";
+import qrReducer from '../Components/QrCode/qrSlice';
 
-const qrContext = createContext();
-const AuthContext = createContext();
-
-export { qrContext, AuthContext };
+export default configureStore({
+  reducer: {
+    auth: authReducer,
+    qr: qrReducer,
+  },
+});

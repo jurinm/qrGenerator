@@ -1,13 +1,15 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../../store/store";
 import { SignUp, Login, Spiner } from "../../Components";
 import { endPoints } from "../../consts";
 import styles from "./auth.module.css";
-
+import { useSelector, useDispatch } from 'react-redux'
+import { logout, login } from "./authSlice";
 const Auth = () => {
-  const { userData, setUserData } = useContext(AuthContext);
+  const userData = useSelector(state => state.auth);
+  console.log(userData)
   const [selected, setSelected] = useState("signin");
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch()
 
   const selectHandler = () => {
     if (isLoading) return <Spiner />
@@ -18,8 +20,7 @@ const Auth = () => {
 
   function signOut () {
     localStorage.removeItem("token")
-    localStorage.removeItem("nickname")
-    setUserData(out => out = {nickname: null, token: null})
+    dispatch(logout())
   };  
 
   function loginHandler(inputData) {
@@ -41,8 +42,7 @@ const Auth = () => {
       .then((userData) => {
         console.log(userData)
         localStorage.setItem("token", userData.token)
-        localStorage.setItem("nickname", userData.nickname)
-        setUserData(newUserData => newUserData = userData)
+        dispatch(login(userData))
         console.log(userData)
       })
       .catch((er) => console.error(er))

@@ -1,44 +1,44 @@
-import { useContext } from "react";
-import { AuthContext } from "../../store/store";
-import { qrContext } from "../../store/store";
-
 import styles from "./main.module.css";
 
+import {useSelector, useDispatch} from 'react-redux';
+import { setText, setBackground, setForeground } from "../../Components/QrCode/qrSlice";
 import { QrCode, Input, Auth } from "../../Components";
 
 import Selector from "../Selector/Selector";
 
 
 const Main = () => {
-  const { qrSettings, setText, setBackground, setForeground } =
-    useContext(qrContext);
-    
-  const { userData } = useContext(AuthContext);
+  const qrSettings = useSelector((state) => state.qr.qrSetting);
+
+  const dispatch = useDispatch()
+
+  const userData = useSelector(state => state.auth);
   console.log(userData)
+  console.log(qrSettings)
 
   return (
     <div className={styles.main}>
       <Input
         labelText={"Enter text to generate Your Qr code"}
         inputType={"text"}
-        inputOnChange={setText}
+        inputOnChange={(e) => dispatch(setText(e))}
         inputPlaceholder="URL or text"
       />
       <Input
         labelText={"Select background color"}
         inputType={"color"}
-        inputOnChange={setBackground}
+        inputOnChange={(e) => dispatch(setBackground(e))}
         isDisabled={qrSettings.preset && true}
         initialValue={qrSettings.backgroundColor}
       />
       <Input
         labelText={"Select code color"}
         inputType={"color"}
-        inputOnChange={setForeground}
+        inputOnChange={(e) => dispatch(setForeground(e))}
         isDisabled={qrSettings.preset && true}
         initialValue={qrSettings.foregroundColor}
       />
-      <Selector auth={userData.token}/>
+      <Selector />
       <QrCode />
     </div>
   );

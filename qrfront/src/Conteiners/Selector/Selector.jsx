@@ -1,15 +1,16 @@
 import { useContext, useState, useMemo, useCallback } from "react";
 
-import { qrContext } from "../../store/store";
-
 import styles from "./selector.module.css";
 
 import { drawersNames, presetNames } from "../../consts";
 
 import { ButtonIcon } from "../../Components";
 
+import {useDispatch} from 'react-redux'
+import { setDrawer, setPreset } from "../../Components/QrCode/qrSlice";
+
 const Selector = ({...props}) => {
-  const { setDrawer, setPreset } = useContext(qrContext);
+  const dispatch = useDispatch()
 
   const [selectedDrawer, setSelectedDrawer] = useState("square");
   const [selectedPreset, setSelectedPreset] = useState("");
@@ -17,18 +18,18 @@ const Selector = ({...props}) => {
   const selectDrawerHandler = useCallback((e) => {
     if (selectedDrawer !== e) {
       setSelectedDrawer((newSelect) => (newSelect = e));
-      setDrawer(e);
+      dispatch(setDrawer(e));
     }
   }, [selectedDrawer, setDrawer])
 
   const selectPresetHandler = useCallback((e) => {
     if (selectedPreset === e) {
       setSelectedPreset((newSelect) => (newSelect = null));
-      setPreset(null);
+      dispatch(setPreset(null));
     }
     if (selectedPreset !== e) {
       setSelectedPreset((newSelect) => (newSelect = e));
-      setPreset(e);
+      dispatch(setPreset(e));
     }
   }, [selectedPreset, setPreset])
 
@@ -64,7 +65,7 @@ const Selector = ({...props}) => {
     [selectPresetHandler, selectedPreset, props.auth]
   );
 
-  const noAuth = () => {
+  const NoAuth = () => {
     return (
       <div className="">
         <h2>Please sign in to use social media presets</h2>
@@ -79,7 +80,7 @@ const Selector = ({...props}) => {
         {drawerMemo}
       </div>
       <div >
-        {props.auth ? presetMemo : noAuth()}
+        {props.auth ? presetMemo : <NoAuth />}
       </div>
     </div>
   );

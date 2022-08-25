@@ -1,13 +1,15 @@
 import { useContext, useState, useEffect } from "react";
-
+import { useSelector } from 'react-redux'
 import { qrContext } from "../store/store";
 
 import { endPoints } from "../consts";
 
 export function useQrFetch() {
-  const { qrSettings } = useContext(qrContext);
+  const qrSettings = useSelector((state) => state.qr.qrSetting);
+  
   const [fetchedImage, setFetchedImage] = useState();
   const [isFetching, setIsFetching] = useState(true);
+
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
