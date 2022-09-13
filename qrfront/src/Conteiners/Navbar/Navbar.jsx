@@ -1,7 +1,7 @@
 import { logo } from "../../assets/img";
 import styles from "./navbar.module.css";
 import { Button } from "../../Components";
-import { Modal, Auth} from "../../Conteiners/";
+import { Modal} from "../../Conteiners/";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -16,13 +16,10 @@ const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarLogo}>
           <img src={logo} alt="QR maker logo" />
-        </div>
-        <div>
-          <Button buttonClickHandler={authHandler}>Sign Up / Sign In</Button>
-        </div>
+        </div>        
       </nav>
       <Modal isModalOpen={authModalState} setIsModalOpen={setAuthModalState}>
-        <Auth />
+        
       </Modal>
     </>
   );

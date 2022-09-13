@@ -10,6 +10,7 @@ import {useDispatch} from 'react-redux'
 import { setDrawer, setPreset } from "../../Components/QrCode/qrSlice";
 
 const Selector = ({...props}) => {
+  
   const dispatch = useDispatch()
 
   const [selectedDrawer, setSelectedDrawer] = useState("square");
@@ -20,7 +21,7 @@ const Selector = ({...props}) => {
       setSelectedDrawer((newSelect) => (newSelect = e));
       dispatch(setDrawer(e));
     }
-  }, [selectedDrawer, setDrawer])
+  }, [selectedDrawer])
 
   const selectPresetHandler = useCallback((e) => {
     if (selectedPreset === e) {
@@ -31,7 +32,7 @@ const Selector = ({...props}) => {
       setSelectedPreset((newSelect) => (newSelect = e));
       dispatch(setPreset(e));
     }
-  }, [selectedPreset, setPreset])
+  }, [selectedPreset])
 
   const drawerMemo = useMemo(
     () =>
@@ -65,22 +66,13 @@ const Selector = ({...props}) => {
     [selectPresetHandler, selectedPreset, props.auth]
   );
 
-  const NoAuth = () => {
-    return (
-      <div className="">
-        <h2>Please sign in to use social media presets</h2>
-      </div>
-    )
-  };
-
-
   return (
     <div className={styles.selector}>
       <div >
         {drawerMemo}
       </div>
       <div >
-        {props.auth ? presetMemo : <NoAuth />}
+        {presetMemo}
       </div>
     </div>
   );
