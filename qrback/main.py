@@ -48,14 +48,20 @@ def registration():
         if request.method == 'POST':
             from db.querys import add_user
 
-            add_user(user_data)
-            print(f'User {user_data["nickname"]} successfully created')
-            return jsonify(f'User {user_data["nickname"]} successfully created'), 201
+            db_status = add_user(user_data)
+            print(db_status)
+            if db_status == 409:
+                return jsonify({'status': 409, 'message': 'User already exists'})
+            if db_status == 201:
+                print('test add user')
+                return jsonify({'status': 201, 'message': f'User {user_data["email"]} successfully created'})
+
     except Exception as ex:
+        print(ex)
         error_log = f'{datetime.now()} An error happened - {ex}'
         with open('log.txt', 'a') as f:
             f.writelines(f'\n{error_log}')
-        return "Something went wrong", 400
+        return jsonify({'status': 409, 'errorMessage': 'Something went wrong'})
 
 
 @app.route('/login', methods=['POST'])
@@ -68,17 +74,16 @@ def login():
 
         from db.querys import get_user
         user = get_user(auth)
-
+        print(f'{user} main py')
         if user:
             from jwt_auth.oath import generate_token
             user_token = generate_token(user, auth)
             print(user_token)
             print(user.nickname)
             print(jsonify({'nickname': user.nickname, 'token': user_token}))
-            return jsonify({'nickname': user.nickname, 'token': user_token})
+            return jsonify({'status': 200, 'nickname': user.nickname, 'token': user_token})
 
-        return make_response('Wron'
-                             'g email or password', 401, {'WWW-Authenticate': 'Basic realm:"Login required"'})
+        return jsonify({'status': 401, 'errorMessage': 'Wrong Email or password'})
 
 
 @app.route('/check', methods=['POST'])
@@ -104,3 +109,4 @@ def token_check():
 
 if __name__ == '__main__':
     app.run(debug=True)
+

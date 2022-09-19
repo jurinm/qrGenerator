@@ -1,5 +1,6 @@
 import { Navbar } from "./Components";
 import { Main, Modal } from "./Conteiners";
+import Router from "./Routes/Routes";
 import "./App.css";
 
 
@@ -10,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Main />
+      <Router />
     </div>
   );
 }

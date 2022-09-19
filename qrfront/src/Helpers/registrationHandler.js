@@ -1,20 +1,19 @@
 import { endPoints } from "../consts";
 
-function registrationHandler(inputData) {
+async function registrationHandler(inputData) {
+  console.log(inputData)
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      nickname: inputData.nickname,
       email: inputData.email,
       password: inputData.password,
     }),
   };
 
-  fetch(`${endPoints.registration}`, requestOptions)
-    .then((response) => response.json())
-    .catch((er) => console.error(er))
-    .finally((res) => res);
+  const response = await fetch(`${endPoints.registration}`, requestOptions)
+  const registrationResult = await response.json()
+  return registrationResult
 }
 
 export default registrationHandler;

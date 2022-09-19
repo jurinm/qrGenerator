@@ -1,23 +1,26 @@
 import { endPoints } from "../consts";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../Conteiners/Auth/authSlice";
 
 async function loginHandler(inputData) {
-  console.log(inputData)
+  const { email, password } = inputData;
+
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      email: inputData.email,
-      password: inputData.password,
+      email: email,
+      password: password,
     }),
   };
 
-  const response = await fetch(`${endPoints.login}`, requestOptions)
-    .then((response) => response.json())
-    .then((userData) => localStorage.setItem("userData", userData))
-    .catch((er) => console.error(er))
-    .finally((token) => console.log(token));
-    console.log(response)
-    return response;
+  const response = await fetch(`${endPoints.login}`, requestOptions);
+  const userData = await response.json();
+  if (response.ok) {
+    localStorage.setItem("token", userData.token);
+    return userData;
+  }
+  return "Error";
 }
 
 export default loginHandler;

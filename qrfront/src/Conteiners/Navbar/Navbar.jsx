@@ -3,6 +3,7 @@ import styles from "./navbar.module.css";
 import { Button } from "../../Components";
 import { Modal} from "../../Conteiners/";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -15,12 +16,17 @@ const Navbar = () => {
     <>
       <nav className={styles.navbar}>
         <div className={styles.navbarLogo}>
-          <img src={logo} alt="QR maker logo" />
+          <Link to={'/'}>
+            Home
+          </Link>
+          <Link to={'/registration'}>
+          Registration
+          </Link>
+          <Link to={'/auth'}>
+          Login
+          </Link>
         </div>        
       </nav>
-      <Modal isModalOpen={authModalState} setIsModalOpen={setAuthModalState}>
-        
-      </Modal>
     </>
   );
 };
