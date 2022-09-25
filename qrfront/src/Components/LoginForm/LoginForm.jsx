@@ -17,7 +17,6 @@ const LoginForm = () => {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
 
-  console.log(token);
   const loginSubmit = async (data) => {
     console.log(data);
     setCredentialsError(false);
