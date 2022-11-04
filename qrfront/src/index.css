@@ -1,16 +1,29 @@
-:root{
-    /* Colors */
-    --color-teal: #056571;
-    --color-mate: #414141;
-    --color-red-pale: #ff6a5c;
-    --color-pale: #ccdfcb;
+@import url("https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap");
 
-    /* Margins */
-    --margin-element: 0.4rem;
+:root {
+  /* Colors */
+  --color-teal: #056571;
+  --color-mate: #414141;
+  --color-red-pale: #ff6a5c;
+  --color-red-pale-inactive: #ff8d83;
+  --color-pale: #e6ece6;
+  --color-red-pale-hover: #ce5348;
+
+  /* Margins */
+  --margin-element: 0.4rem;
+  /*Font*/
+  --font-main: 'Tiro Devanagari Sanskrit', serif;
+}
+#root {
+  height: 100%;
+  
+}
+body {
+  background-color: var(--color-teal);
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }

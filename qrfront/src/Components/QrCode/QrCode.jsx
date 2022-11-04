@@ -1,21 +1,14 @@
 import { Spiner } from "../../Components";
+import { useQrFetch } from "../../Hooks/useQrFetch";
+import styles from "./qrcode.module.css";
+import fallbackImg from '../../assets/img/fallback.png'
 
-import './qrcode.css'
-
-const QrCode = ({image, isLoading}) => {
+const QrCode = () => {
+  const qrSrc = useQrFetch();
+  console.log(qrSrc)
   return (
-    <div className="QrCode">
-      {isLoading ? (
-          <Spiner />
-        ) : (
-          <>
-            {image ? (
-              <img src={image.qrImage} alt="Your QR code" />
-            ) : (
-              <h3>Your Qr code, will apear here</h3>
-            )}
-          </>
-        )}
+    <div className={styles.qrCode}>
+      {qrSrc.isFetching ? <Spiner /> : <img src={qrSrc.fetchedImage ? qrSrc.fetchedImage : fallbackImg} alt="Your Qr Code" /> }
     </div>
   );
 };

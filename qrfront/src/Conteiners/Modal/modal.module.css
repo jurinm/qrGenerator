@@ -1,0 +1,35 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(65, 65, 65, .9);
+    z-index: 10;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+
+  .closeButton {
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      color: white;
+      cursor: pointer;
+      font-size: 4rem;
+      transition: .3s;
+  }
+  .closeButton:after{
+    display: inline-block;
+    content: "\00d7";
+  }
+
+  .closeButton:hover {
+      color: var(--color-red-pale-hover);
+  }
+
+  
+  

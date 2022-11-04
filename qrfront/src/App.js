@@ -1,19 +1,19 @@
-import { Navbar } from './Components';
+import { Navbar } from "./Components";
+import { Main, Modal } from "./Conteiners";
+import Router from "./Routes/Routes";
+import "./App.css";
 
-import { Main } from './Conteiners';
-
-import './App.css'
 
 //TODO: add PWA
 
 function App() {
+
   return (
     <div className="App">
-      <Main />
+      {/* <Navbar /> */}
+      <Router />
     </div>
   );
 }
 
 export default App;
-
-

@@ -1,0 +1,19 @@
+.buttonIcon {
+    transition: .4s ease-in;
+    margin: var(--margin-element);
+}
+
+.buttonIcon img {
+    transition: .2s ease;
+    max-width: 75px;
+    flex-shrink: 1;
+}
+.buttonIcon:hover {
+    cursor: pointer;
+    filter: brightness(75%);
+}
+
+.buttonSelected {
+    border-radius: .5rem;
+    border: 3px var(--color-red-pale) solid;
+}

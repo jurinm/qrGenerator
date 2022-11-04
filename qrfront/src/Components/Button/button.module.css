@@ -1,0 +1,22 @@
+.buttonConteiner {
+    margin: var(--margin-element);
+    
+}
+.button {
+    font-size: 1.2rem;
+    background-color: var(--color-red-pale);
+    width: 100%;
+    background-color: none;
+    text-align: center;
+    outline: none;
+    border-radius: 0.4rem;
+    border: none;
+    padding: 0.4rem 0.7rem;
+    color: var( --color-pale);
+    transition: background-color .3s;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: var(--color-red-pale-hover);
+}

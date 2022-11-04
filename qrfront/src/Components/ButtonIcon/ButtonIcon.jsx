@@ -1,12 +1,13 @@
-import "./buttonicon.css";
+import styles from "./buttonicon.module.css";
 
 const ButtonIcon = ({ ...props }) => {
+  
   return (
-    <div className="ButtonIcon">
+    <div className={styles.buttonIcon} >
       <img
-        className={props.style}
+        className={props.selected === props.buttonId ? styles.buttonSelected : ''}
         id={props.buttonId}
-        onClick={(e) => props.onSelect(e.target.id)}
+        onClick={(e) => props.iconOnClick(e.target.id)}
         src={props.icon}
         alt={`Make ${props.buttonId} qr code`}
       />

@@ -30,3 +30,10 @@ export const presetNames = [
   { name: "telegram", icon: telegram },
   { name: "twitter", icon: twitter },
 ];
+
+export const endPoints = {
+  generator: 'http://127.0.0.1:5000/generate',
+  registration: 'http://127.0.0.1:5000/registration',
+  login: 'http://127.0.0.1:5000/login',
+  verify: 'http://127.0.0.1:5000/check',
+}

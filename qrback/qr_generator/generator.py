@@ -1,9 +1,10 @@
 import qrcode
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.colormasks import RadialGradiantColorMask, SolidFillColorMask, SquareGradiantColorMask
-from qrcode.image.svg import SvgImage
+
 import io
 import base64
+
 from PIL import ImageColor
 
 from qrcode.image.styles.moduledrawers import RoundedModuleDrawer, SquareModuleDrawer, GappedSquareModuleDrawer, \
@@ -21,7 +22,7 @@ def gen(text: str, background: str, foreground: str, drawer: str, preset: str):
         box_size=10,
         border=1,
     )
-# TODO: решить проблему с задержкой цветов
+
     qr.add_data(text)
 
     background_rgb = ImageColor.getcolor(background, 'RGB')

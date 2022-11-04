@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "start": "cd qrfront && node scripts/start.js",
+    "build": "node  qrfront/scripts/build.js",
+    "test": "node  qrfront/scripts/test.js"
+  }
+}

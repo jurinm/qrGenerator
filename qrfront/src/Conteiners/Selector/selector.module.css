@@ -1,0 +1,12 @@
+.selector {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.selector > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
