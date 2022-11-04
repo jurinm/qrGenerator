@@ -32,8 +32,8 @@ export const presetNames = [
 ];
 
 export const endPoints = {
-  generator: 'http://127.0.0.1:5000/generate',
-  registration: 'http://127.0.0.1:5000/registration',
-  login: 'http://127.0.0.1:5000/login',
-  verify: 'http://127.0.0.1:5000/check',
+  generator: 'https://generatorqr.herokuapp.com//generate',
+  registration: 'https://generatorqr.herokuapp.com//registration',
+  login: 'https://generatorqr.herokuapp.com//login',
+  verify: 'https://generatorqr.herokuapp.com//check',
 }
