@@ -13,7 +13,7 @@ load_dotenv()
 # database_url = os.environ.get('DATABASE_URI')
 # secret_key = os.environ.get('SECRET_KEY')
 
-app = Flask(__name__, static_folder='build')
+app = Flask(__name__, static_folder='/build')
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 # app.config['SECRET_KEY'] = secret_key
