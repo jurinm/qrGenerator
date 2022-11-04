@@ -2,18 +2,25 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 100%;
+  flex: 1;
+  width: 100vw;
+  height: 100vh;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: var(--color-teal);
   overflow: hidden;
   font-family: var(--font-main);
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-width: 700px) {
   .App {
-    overflow: visible;
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (max-height: 900px) {
+  .App {
+    overflow: auto;
     height: 100%;
   }
 }

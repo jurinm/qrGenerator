@@ -1,13 +1,12 @@
 .navbar {
-    position: fixed;
-    top:1vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
 }
 
-.navbarLogo img{
-    max-width: 8%;
-    border-radius: 1rem;
+.navbarLogo img {
+  max-width: 8%;
+  border-radius: 1rem;
 }

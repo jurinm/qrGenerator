@@ -8,7 +8,7 @@ const QrCode = () => {
   console.log(qrSrc)
   return (
     <div className={styles.qrCode}>
-      {qrSrc.isFetching ? <Spiner /> : <img src={qrSrc.fetchedImage ? qrSrc.fetchedImage : fallbackImg} alt="Your Qr Image" /> }
+      {qrSrc.isFetching ? <Spiner /> : <img src={qrSrc.fetchedImage ? qrSrc.fetchedImage : fallbackImg} alt="Your Qr Code" /> }
     </div>
   );
 };

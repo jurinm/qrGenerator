@@ -3,10 +3,21 @@
   padding: var(--margin-element);
   font-size: 1.2rem;
   width: 100%;
+  max-width: 400px;
 }
 
 .input input {
   width: 100%;
+  max-width: 400px;
   color: var(--color-teal);
-  height: 2.4rem;
+  height: 2rem;
+}
+
+input[type=text] {
+  padding: .6rem;
+}
+
+input:focus {
+  border-color: var(--color-pale);
+  
 }

@@ -12,4 +12,4 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=False)
 
     def __repr__(self):
-        return '<User %r>' % self.nickname
+        return '<User %r>' % self.email

@@ -22,6 +22,7 @@ const LoginForm = () => {
     setCredentialsError(false);
     setIsInputActive((val) => (val = true));
     const loginRes = await loginHandler(data);
+    console.log(loginRes)
     if (loginRes.status === 200) {
       reset();
       dispatch(login(loginRes.token));

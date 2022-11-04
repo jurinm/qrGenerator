@@ -5,7 +5,7 @@
 
 .buttonIcon img {
     transition: .2s ease;
-    max-width: 100px;
+    max-width: 75px;
     flex-shrink: 1;
 }
 .buttonIcon:hover {

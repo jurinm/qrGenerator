@@ -79,9 +79,9 @@ def login():
             from jwt_auth.oath import generate_token
             user_token = generate_token(user, auth)
             print(user_token)
-            print(user.nickname)
-            print(jsonify({'nickname': user.nickname, 'token': user_token}))
-            return jsonify({'status': 200, 'nickname': user.nickname, 'token': user_token})
+            print(user.email)
+            print(jsonify({'email': user.email, 'token': user_token}))
+            return jsonify({'status': 200, 'email': user.email, 'token': user_token})
 
         return jsonify({'status': 401, 'errorMessage': 'Wrong Email or password'})
 

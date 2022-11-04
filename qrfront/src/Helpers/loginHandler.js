@@ -4,7 +4,7 @@ import { login } from "../Conteiners/Auth/authSlice";
 
 async function loginHandler(inputData) {
   const { email, password } = inputData;
-
+  
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -17,7 +17,8 @@ async function loginHandler(inputData) {
   const response = await fetch(`${endPoints.login}`, requestOptions);
   const userData = await response.json();
   if (response.ok) {
-    localStorage.setItem("token", userData.token);
+    console.log(typeof userData.token)
+    localStorage.setItem('token', userData.token);
     return userData;
   }
   return "Error";

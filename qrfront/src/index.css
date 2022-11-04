@@ -14,6 +14,13 @@
   /*Font*/
   --font-main: 'Tiro Devanagari Sanskrit', serif;
 }
+#root {
+  height: 100%;
+  
+}
+body {
+  background-color: var(--color-teal);
+}
 
 * {
   box-sizing: border-box;

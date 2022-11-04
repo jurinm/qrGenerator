@@ -1,4 +1,4 @@
-import { useContext, useState, useMemo, useCallback } from "react";
+import { memo, useState, useMemo, useCallback } from "react";
 
 import styles from "./selector.module.css";
 
@@ -6,13 +6,12 @@ import { drawersNames, presetNames } from "../../consts";
 
 import { ButtonIcon } from "../../Components";
 
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { setDrawer, setPreset } from "../../Components/QrCode/qrSlice";
 
 const Selector = ({...props}) => {
-  
   const dispatch = useDispatch()
-
+  
   const [selectedDrawer, setSelectedDrawer] = useState("square");
   const [selectedPreset, setSelectedPreset] = useState("");
 
